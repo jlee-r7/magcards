@@ -12,22 +12,18 @@ class CreditCardData < CardData
     super
 
     if track_1
-      number,name,extra = track_1.split(/[\^]/)
+      number,@name,extra = track_1.split(/[\^]/)
       number = number[1,number.length]
-      if extra
-        @expiration = extra[0,4]
-        @service_code = extra[4,3]
-        @discretionary = extra[7,extra.length]
-      end
     elsif track_2
       number,extra = track_2.split("=")
-      if extra
-        @expiration = extra[0,4]
-        @service_code = extra[4,3]
-        @discretionary = extra[7,extra.length]
-      end
     else
       return
+    end
+
+    if extra
+      @expiration = extra[0,4]
+      @service_code = extra[4,3]
+      @discretionary = extra[7,extra.length]
     end
 
     # Luhn algorithm stolen from

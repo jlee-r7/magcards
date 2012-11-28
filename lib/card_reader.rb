@@ -2,6 +2,7 @@
 # encoding: ascii-8bit
 
 require "serialport"
+require "pathname"
 
 $LOAD_PATH.unshift(Pathname.new(__FILE__).dirname.to_s)
 require "card_data"
@@ -21,7 +22,7 @@ class CardReader
   # Open the given device as a SerialPort. Hardcoded with 9600:N:8:1, because
   # I'm lazy.
   #
-  # @param [String] device The serial device file associated with your card
+  # @param device [String] The serial device file associated with your card
   #   reader
   def initialize(device="/dev/ttyUSB0")
     self.device = device
@@ -38,7 +39,8 @@ class CardReader
   # Write the given data on the next swipe. If the reader says the write
   # failed, this will loop, asking for another swipe.
   #
-  # @param [String,#to_s,#inspect] data
+  # @param data [String,#to_s,#inspect] Raw data to store on the next swiped
+  #   card. Can be an instance of {CardData}
   # @return [void]
   def write(data="")
     puts "Writing data: #{data.inspect}"

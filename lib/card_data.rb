@@ -16,7 +16,7 @@ class CardData
   #
   # Create a new instance with the given raw track data
   #
-  # @param [String] str Raw track data as returned by {CardReader#read}
+  # @param str [String] Raw track data as returned by {CardReader#read}
   # @return [CardData] A new instance with tracks parsed out of +str+
   def self.from_s(str)
     cd = new
@@ -33,7 +33,7 @@ class CardData
 
   # Replace the current track data with what can be parsed out of +str+
   #
-  # @param [String] str Track data as returned from {CardReader#read}
+  # @param str [String] Track data as returned from {CardReader#read}
   # @return [self]
   #
   def parse!(str)

@@ -1,6 +1,6 @@
 Magcards
 ========
 
-A simple library for reading and writing magnetic-stripe cards.
+A simple Ruby library for reading and writing magnetic-stripe cards.
 
 
